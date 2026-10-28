@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071521">
+  <meta name="description" content="Digital Legacy — organize important digital information, choose trusted nominees, and plan access with care.">
+  <title>Digital Legacy — Your Information. Your Choice.</title>
+  <script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('digitalLegacy:theme')==='light'?'light':'dark');}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=17">
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Public welcome / registration / login experience -->
+  <section id="authView" class="auth-screen">
+    <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grid-glow"></div>
+    <header class="auth-topbar">
+      <a class="brand" href="#welcome" aria-label="Digital Legacy home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M15 8.5h13l7 7V37H15z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M28 8.5V16h7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M20 23h10M20 28h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="32.5" cy="33" r="6.3" fill="#ff784f" stroke="#071521" stroke-width="2"/><path d="m29.8 33 1.8 1.8 3.5-3.7" stroke="#071521" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="brand-wordmark"><strong>DIGITAL <em>LEGACY</em></strong><small>Your Information. Your Choice. Your Legacy.</small></span>
+      </a>
+      <div class="top-status"><span class="status-dot"></span> PRIVATE BY DESIGN <span class="top-status-divider"></span> SECURED SERVER-SIDE</div>
+      <button id="authThemeBtn" class="topbar-icon-btn theme-btn" aria-label="Change theme" title="Change theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.1M12 19.5v2.1M4.2 12H2.1M21.9 12h-2.1M5.6 5.6 4.1 4.1M19.9 19.9l-1.5-1.5M18.4 5.6l1.5-1.5M4.1 19.9l1.5-1.5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.4 8.4 0 0 1 9.8 3.6a8.4 8.4 0 1 0 10.6 10.6z"/></svg></button>
+    </header>
+
+    <main class="auth-layout" id="welcome">
+      <section class="auth-story">
+        <div class="eyebrow"><span></span> PLAN TODAY. BRING CLARITY TOMORROW.</div>
+        <h1>Your digital life,<br><span>thoughtfully protected.</span></h1>
+        <p class="story-lead">Keep the important pieces of your online life organized. Record what matters, decide who you trust, and make your wishes easier to follow.</p>
+        <div class="story-features">
+          <article class="story-feature"><span class="feature-mark blue-mark">◈</span><div><strong>One considered place</strong><small>Keep account references, documents, and investment records organized.</small></div></article>
+          <article class="story-feature"><span class="feature-mark orange-mark">♧</span><div><strong>People you choose</strong><small>Choose nominees and define the categories they may be allowed to access.</small></div></article>
+          <article class="story-feature"><span class="feature-mark mint-mark">✓</span><div><strong>Access with safeguards</strong><small>A request is not approval. A real process requires verification and authorized review.</small></div></article>
+        </div>
+        <div class="story-footnote"><span class="tiny-shield">◇</span><span>Built around consent, clarity, and your choices.</span></div>
+      </section>
+
+      <section class="auth-card" id="authCard" aria-live="polite">
+        <div class="auth-view-panel" id="welcomePanel">
+          <div class="card-kicker">GET STARTED</div>
+          <h2>Welcome to<br>Digital Legacy<span class="orange-period">.</span></h2>
+          <p class="card-intro">Choose how you would like to continue.</p>
+          <button class="auth-choice" id="newUserChoice" data-open-auth="register"><span class="choice-icon choice-orange">✦</span><span class="choice-copy"><strong>New User?</strong><small>Create your account and start your legacy plan.</small></span><span class="choice-arrow">↗</span></button>
+          <button class="auth-choice" id="loginChoice" data-open-auth="login"><span class="choice-icon choice-blue">↗</span><span class="choice-copy"><strong>Login</strong><small>Continue to your personal workspace.</small></span><span class="choice-arrow">↗</span></button>
+          <button class="auth-choice" id="nomineeChoice"><span class="choice-icon choice-orange">♧</span><span class="choice-copy"><strong>Nominee For</strong><small>View a legacy shared with you by an owner.</small></span><span class="choice-arrow">↗</span></button>
+
+        </div>
+
+        <div class="auth-view-panel hidden" id="loginPanel">
+          <button class="back-link" data-back-welcome>← Back to welcome</button>
+          <div class="form-symbol blue-symbol">↗</div><div class="card-kicker">YOUR WORKSPACE</div><h2>Welcome back<span class="orange-period">.</span></h2>
+          <p class="card-intro">Sign in to continue to your secure workspace.</p>
+          <form id="loginForm" novalidate>
+            <label for="loginEmail">Email address</label><input id="loginEmail" name="email" type="email" autocomplete="username" placeholder="you@example.com" required>
+            <label for="loginPassword">Password</label><div class="password-input"><input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required><button type="button" class="password-toggle" data-toggle-input="loginPassword">Show</button></div>
+            <div class="form-meta"><label class="check-line"><input id="rememberEmail" type="checkbox"> Remember email</label><button type="button" class="text-action" id="forgotPasswordBtn">Forgot password?</button></div>
+            <button type="submit" class="primary-btn full-width">Continue securely <span>→</span></button>
+          </form>
+          <div class="auth-switch">New to Digital Legacy? <button class="text-action" data-open-auth="register">Create an account</button></div>
+        </div>
+
+        <div class="auth-view-panel hidden" id="registerPanel">
+          <button class="back-link" data-back-welcome>← Back to welcome</button>
+          <div class="form-symbol orange-symbol">✦</div><div class="card-kicker">START YOUR PLAN</div><h2>Create your account<span class="orange-period">.</span></h2>
+          <p class="card-intro">Your login password protects your account on our secure server. Passwords are salted and hashed — never stored in plaintext.</p>
+          <form id="registerForm" novalidate>
+            <label for="regName">Full name</label><input id="regName" name="name" type="text" autocomplete="name" placeholder="Your full name" minlength="2" maxlength="80" required>
+            <label for="regEmail">Email address</label><input id="regEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            <label for="regMobile">Mobile number</label><input id="regMobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+            <div class="form-two-col"><div><label for="regPassword">Password</label><div class="password-input"><input id="regPassword" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 chars" required><button type="button" class="password-toggle" data-toggle-input="regPassword">Show</button></div></div><div><label for="regConfirm">Confirm password</label><input id="regConfirm" name="confirm" type="password" autocomplete="new-password" minlength="8" placeholder="Repeat password" required></div></div>
+            <div class="password-hint">Use 8+ characters. Never reuse a password from another service.</div>
+            <label class="check-line consent-line"><input id="consent" type="checkbox" required><span>I accept the <button type="button" class="text-action inline-action" id="privacyPrinciplesBtn">privacy principles</button> and understand my data is protected by the secure backend.</span></label>
+            <button type="submit" class="primary-btn full-width">Create account <span>→</span></button>
+          </form>
+          <div class="auth-switch">Already registered? <button class="text-action" data-open-auth="login">Sign in</button></div>
+        </div>
+      </section>
+    </main>
+    <footer class="auth-footer"><span>© 2026 Digital Legacy</span><span>Thoughtful planning, built around your choices <b>●</b></span></footer>
+  </section>
+
+  <!-- Dedicated nominee access portal (no account needed — mobile + security code) -->
+  <section id="portalView" class="auth-screen hidden">
+    <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grid-glow"></div>
+    <header class="auth-topbar">
+      <a class="brand" href="#" onclick="return false;" aria-label="Digital Legacy">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M15 8.5h13l7 7V37H15z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M28 8.5V16h7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M20 23h10M20 28h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="32.5" cy="33" r="6.3" fill="#ff784f" stroke="#071521" stroke-width="2"/><path d="m29.8 33 1.8 1.8 3.5-3.7" stroke="#071521" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="brand-wordmark"><strong>DIGITAL <em>LEGACY</em></strong><small>Nominee Access Portal</small></span>
+      </a>
+      <div class="top-status"><span class="status-dot"></span> VERIFIED ACCESS ONLY</div>
+    </header>
+    <main class="auth-layout">
+      <section class="auth-story">
+        <div class="eyebrow"><span></span> FOR A NAMED NOMINEE, BY THE OWNER</div>
+        <h1>Access someone's<br><span>legacy, with safeguards.</span></h1>
+        <p class="story-lead">You can open this page only because an account owner registered your mobile number and chose to share a security code with you. Nothing here is automatic — the server checks every step.</p>
+        <div class="story-features">
+          <article class="story-feature"><span class="feature-mark blue-mark">◈</span><div><strong>Mobile-bound</strong><small>The code only works with the number the owner registered for you.</small></div></article>
+          <article class="story-feature"><span class="feature-mark orange-mark">♧</span><div><strong>Limited permission</strong><small>You see only the documents and categories the owner released in that code.</small></div></article>
+          <article class="story-feature"><span class="feature-mark mint-mark">✓</span><div><strong>Short & revocable</strong><small>Sessions expire in minutes, and the owner can revoke a code at any moment.</small></div></article>
+        </div>
+        <div class="story-footnote"><span class="tiny-shield">◇</span><span>Every access event is recorded in the owner's activity log.</span></div>
+      </section>
+      <section class="auth-card" aria-live="polite">
+        <div class="auth-view-panel" id="portalMobilePanel">
+          <button class="back-link" id="portalBackBtn">← Back to welcome</button>
+          <div class="form-symbol blue-symbol">♧</div><div class="card-kicker">NOMINEE ACCESS</div>
+          <h2>Identify yourself<span class="orange-period">.</span></h2>
+          <p class="card-intro">Enter the mobile number the account owner registered for you.</p>
+          <form id="portalIdentifyForm" novalidate>
+            <label for="portalMobile">Mobile number</label><input id="portalMobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+            <button type="submit" class="primary-btn full-width" id="portalIdentifyBtn">Continue <span>→</span></button>
+          </form>
+        </div>
+        <div class="auth-view-panel hidden" id="portalCodePanel">
+          <button class="back-link" data-portal-back>← Use a different number</button>
+          <div class="form-symbol orange-symbol">◇</div><div class="card-kicker">SECURITY CODE</div>
+          <h2>Enter your code<span class="orange-period">.</span></h2>
+          <p class="card-intro" id="portalCodeMobile">Mobile</p>
+          <form id="portalRedeemForm" novalidate>
+            <label for="portalCode">Security code from the owner</label><input id="portalCode" name="code" type="text" class="mono" autocomplete="one-time-code" placeholder="DL-XXXX-XXXX-XXXX-XXXX" maxlength="24" required>
+            <button type="submit" class="primary-btn full-width" id="portalRedeemBtn">Open access <span>→</span></button>
+          </form>
+          <div class="notice info">The code works only for this mobile number, and only while the owner's conditions are met.</div>
+        </div>
+        <div class="auth-view-panel hidden" id="portalSessionPanel">
+          <div class="form-symbol mint-symbol">✓</div><div class="card-kicker">SESSION OPEN</div>
+          <h2>Released to you<span class="orange-period">.</span></h2>
+          <p class="card-intro">A short, narrowly-scoped session — these are the only documents the code allows.</p>
+          <div id="portalSessionBody"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="auth-footer"><span>© 2026 Digital Legacy</span><span>Access without approval is impossible by design <b>●</b></span></footer>
+  </section>
+
+  <!-- Authenticated workspace -->
+  <div id="sidebarOverlay" class="sidebar-overlay" aria-hidden="true"></div>
+  <section id="appView" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand"><a href="#dashboard" class="brand" aria-label="Digital Legacy dashboard"><span class="brand-mark small-brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M15 8.5h13l7 7V37H15z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M28 8.5V16h7M20 23h10M20 28h10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="32.5" cy="33" r="6.3" fill="#ff784f" stroke="#0b1c2a" stroke-width="2"/><path d="m29.8 33 1.8 1.8 3.5-3.7" stroke="#0b1c2a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="brand-wordmark"><strong>DIGITAL <em>LEGACY</em></strong><small>YOUR LEGACY, YOUR WAY</small></span></a><button class="sidebar-close" id="sidebarClose" aria-label="Close navigation">×</button></div>
+      <div class="nav-section-label">WORKSPACE</div>
+      <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span><span>Overview</span></button>
+        <button class="nav-item" data-page="legacy"><span class="nav-icon">▤</span><span>My Documents</span></button>
+        <button class="nav-item" data-page="nominees"><span class="nav-icon">♙</span><span>Nominees &amp; Access</span></button>
+        <button class="nav-item" data-page="portal"><span class="nav-icon">♧</span><span>Nominee Access</span></button>
+        <div class="nav-rule"></div>
+        <button class="nav-item" data-page="security"><span class="nav-icon">◇</span><span>Security & Privacy</span></button>
+        <button class="nav-item" data-page="notifications"><span class="nav-icon"><svg class="bell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span>Activity</span><span class="nav-badge" id="navNotificationCount">0</span></button>
+        <button class="nav-item" data-page="settings"><span class="nav-icon">⚙</span><span>Profile & Settings</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-help"><div class="help-glyph">?</div><strong>Need a hand?</strong><p>Learn how your digital legacy works.</p><button id="helpGuideBtn">Open quick guide <span>→</span></button></div>
+        <button class="sidebar-user" id="sidebarProfileBtn"><span class="avatar" id="sidebarAvatar">U</span><span class="sidebar-user-copy"><strong id="sidebarUserName">Your account</strong><small>Personal workspace</small></span><span class="user-more">•••</span></button>
+      </div>
+    </aside>
+
+    <div class="workspace-main">
+      <header class="workspace-topbar">
+        <div class="topbar-left"><button id="sidebarOpen" class="mobile-menu" aria-label="Open navigation">☰</button><div class="breadcrumbs"><span>Workspace</span><b>/</b><strong id="breadcrumbTitle">Overview</strong></div></div>
+        <div class="topbar-right"><button id="appThemeBtn" class="topbar-icon-btn theme-btn" aria-label="Change theme" title="Change theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.1M12 19.5v2.1M4.2 12H2.1M21.9 12h-2.1M5.6 5.6 4.1 4.1M19.9 19.9l-1.5-1.5M18.4 5.6l1.5-1.5M4.1 19.9l1.5-1.5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.4 8.4 0 0 1 9.8 3.6a8.4 8.4 0 1 0 10.6 10.6z"/></svg></button><div class="encrypted-indicator"><span class="lock-dot">◇</span><span>Secure session</span></div><button id="topbarNotifications" class="topbar-icon-btn" aria-label="Notifications"><svg class="bell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><i id="topbarUnreadDot"></i></button><div class="topbar-profile"><span class="avatar small-avatar" id="topbarAvatar">U</span><span class="profile-name"><strong id="topbarUserName">User</strong><small>Personal account</small></span><button id="profileMenuToggle" class="profile-chevron" aria-label="Profile menu">⌄</button><div id="profileMenu" class="profile-menu hidden"><button data-go-page="settings">Profile & Settings</button><button id="topbarSignOut">Sign out</button></div></div></div>
+      </header>
+      <main id="pageContent" class="page-content" tabindex="-1"></main>
+      <footer class="workspace-footer"><span>© 2026 Digital Legacy</span><span><i></i> Your information. Your choice.</span></footer>
+    </div>
+
+    <!-- Mobile bottom navigation -->
+    <nav id="bottomNav" class="bottom-nav" aria-label="Mobile navigation">
+      <button class="bottom-nav-item active" data-page="dashboard"><span class="bnav-icon">⌂</span><span>Home</span></button>
+      <button class="bottom-nav-item" data-page="legacy"><span class="bnav-icon">▤</span><span>Files</span></button>
+      <button class="bottom-nav-item" data-page="nominees"><span class="bnav-icon">♙</span><span>Nominees</span></button>
+      <button class="bottom-nav-item" data-page="notifications"><span class="bnav-icon"><svg class="bell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span>Alerts</span><span class="bnav-badge hidden" id="bnavNotifCount">0</span></button>
+      <button class="bottom-nav-item" data-page="settings"><span class="bnav-icon">⚙</span><span>Profile</span></button>
+    </nav>
+  </section>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop" role="presentation">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close dialog">×</button><div id="modalContent"></div></section>
+  </div>
+  <script src="app.js?v=20"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+const fs = require('fs');
+const file = 'styles.css';
+let s = fs.readFileSync(file, 'utf8');
+const marker = '@media(max-height:900px)';
+const at = s.indexOf(marker);
+if (at < 0) throw new Error('marker missing');
+const cut = s.lastIndexOf('/*', at);
+if (cut < 0) throw new Error('comment start missing');
+s = s.slice(0, cut);
+s += fs.readFileSync('_auth-fit.css', 'utf8');
+fs.writeFileSync(file, s);
+console.log('tail:', JSON.stringify(s.slice(-160)));
+console.log('stale 900px rule present:', s.includes('max-height:900px'));

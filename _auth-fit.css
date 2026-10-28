@@ -1,0 +1,45 @@
+
+/* Laptop-height fit for the sign-up / sign-in card.
+   The registration form used to grow past the bottom of a 1366x768 or 1280x720
+   screen, so the consent box and the "Create account" button sat below the fold
+   and the page clipped them. The card now carries its own scroll area (nothing can
+   be cut off, whatever the screen height) and the vertical rhythm tightens until the
+   form fits without scrolling at all on common laptop viewports. */
+@media(max-height:960px) and (min-width:851px){
+.auth-screen{min-height:100vh}
+.auth-topbar{height:66px}
+.brand-mark{width:40px;height:40px}
+.brand-mark svg{width:32px;height:32px}
+.auth-layout{padding:20px 0 16px;gap:clamp(38px,6vw,84px)}
+.auth-card{padding:24px 30px 20px;max-height:calc(100vh - 150px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.auth-card:before{position:sticky;top:0;z-index:3;height:0}
+.auth-card h2{font-size:clamp(24px,2.2vw,28px);margin:0 0 6px}
+.card-intro{font-size:13px;line-height:1.55;margin:0 0 12px}
+.auth-card form label,.auth-card .field label{font-size:12px;margin:9px 0 5px}
+.auth-card input:not([type=checkbox]):not([type=radio]):not([type=hidden]),.auth-card .field input:not([type=checkbox]):not([type=radio]):not([type=hidden]){padding:10px 12px;font-size:13.5px;border-radius:10px}
+.form-symbol{width:30px;height:30px;font-size:16px;border-radius:10px;margin-bottom:9px;opacity:.55}
+.card-kicker{margin-bottom:5px;font-size:11px}
+.back-link{margin-bottom:11px}
+.form-meta{margin:9px 0 13px}
+.password-hint{margin:5px 0 0;font-size:11.5px}
+.consent-line{margin:9px 0!important;font-size:11.5px!important}
+.auth-card .primary-btn{padding:11px 16px}
+.auth-switch{margin-top:12px;padding-top:11px}
+.auth-choice{padding:14px 15px;min-height:72px;margin:11px 0 0}
+.choice-icon{width:40px;height:40px;font-size:20px}
+.story-lead{font-size:15.5px;line-height:1.7;margin:0 0 20px}
+.auth-story h1{font-size:clamp(34px,4.2vw,50px);margin:16px 0 16px}
+.story-features{gap:14px;margin:20px 0 20px}
+.feature-mark{width:38px;height:38px;font-size:20px}
+.story-footnote{padding-top:14px}
+.auth-footer{padding:10px 0 13px}
+}
+/* Very short windows: drop the decorative intro line and reclaim more room. */
+@media(max-height:760px) and (min-width:851px){
+.auth-layout{padding:12px 0 10px}
+.auth-card{max-height:calc(100vh - 124px);padding:20px 28px 16px}
+.auth-card h2{font-size:22px}
+.card-intro{display:none}
+.form-symbol{display:none}
+.back-link{margin-bottom:8px}
+}
